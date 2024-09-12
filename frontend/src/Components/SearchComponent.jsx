@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const SearchComponent = () => {
   const [results, setResults] = useState([]);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [submittedQuery, setSubmittedQuery] = useState('');
+  const [submittedQuery, setSubmittedQuery] = useState("");
 
   const location = useLocation();
-  const urlQuery = new URLSearchParams(location.search).get('query') || '';
+  const urlQuery = new URLSearchParams(location.search).get("query") || "";
 
   useEffect(() => {
     if (urlQuery) {
@@ -25,16 +25,18 @@ const SearchComponent = () => {
         setError(null);
 
         try {
-          const response = await fetch(`http://localhost:5000/api/search?query=${submittedQuery}`);
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/search?query=${submittedQuery}`
+          );
 
           if (response.ok) {
             const data = await response.json();
             setResults(data);
           } else {
-            throw new Error('Network response was not ok');
+            throw new Error("Network response was not ok");
           }
         } catch (error) {
-          setError('Failed to fetch search results');
+          setError("Failed to fetch search results");
         } finally {
           setLoading(false);
         }
@@ -69,14 +71,16 @@ const SearchComponent = () => {
           </button>
         </form>
 
-        {loading && <p className="text-center text-lg font-semibold">Loading...</p>}
-        
+        {loading && (
+          <p className="text-center text-lg font-semibold">Loading...</p>
+        )}
+
         {error && (
           <div className="text-center text-red-500">
             <p className="text-lg font-semibold">Error: {error}</p>
           </div>
         )}
-        
+
         {results.length === 0 && submittedQuery && !loading && !error && (
           <div className="text-center mt-8">
             <p className="text-lg font-semibold">Nothing found</p>
@@ -98,7 +102,7 @@ const SearchComponent = () => {
                   {result.name ? (
                     <div>
                       <img
-                        src={result.image || 'default-image-url'}
+                        src={result.image || "default-image-url"}
                         alt={result.name}
                         className="w-full h-48 object-cover rounded-lg mb-2"
                       />

@@ -22,7 +22,9 @@ const HomePage = () => {
 
     const fetchMenuItems = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/menu/get");
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/menu/get`
+        );
         if (Array.isArray(response.data)) {
           setMenuItems(response.data);
           console.log("Menu items fetched successfully");
@@ -42,7 +44,7 @@ const HomePage = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/blog/get-blog"
+          `${import.meta.env.VITE_API_URL}/api/blog/get-blog`
         );
         if (Array.isArray(response.data)) {
           setBlogs(response.data);

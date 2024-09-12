@@ -36,7 +36,7 @@ const AddBlogPage = () => {
     const mutation = useMutation({
         mutationFn: async (newBlog) => {
             try {
-                const response = await axios.post('http://localhost:5000/api/blog/add-blog', newBlog, {
+                const response = await axios.post('${import.meta.env.VITE_API_URL}/api/blog/add-blog', newBlog, {
                     headers: { 'Content-Type': 'application/json' }
                 });
                 return response.data;
