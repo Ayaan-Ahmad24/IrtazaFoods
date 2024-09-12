@@ -16,7 +16,7 @@ import ShowAllMenuItemsAdminPage from "./Components/showAllmenuAdmin";
 import AdminDashboard from "./pages/adminDashboad";
 import Header from "./Components/Header";
 import Footer from "./Components/footer";
-import ErrorBoundary from "./Components/ErrorBoundary";
+import ErrorBoundary from "./Components/Errorboundary";
 import SingleBlogPage from "./Components/blogpage";
 import SearchPage from "./pages/searchpage";
 import PrivateRoute from "./Components/PrivateRoutes"; // Import PrivateRoute
