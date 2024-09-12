@@ -11,13 +11,23 @@ const authRoutes = require('./routes/authRoute');
 const menuRoutes = require('./routes/menuRoute');
 const blogRoutes = require('./routes/blogRoute');
 const searchRoutes = require('./routes/searchRoute');
-
+const allowedOrigins = [process.env.FRONTEND_URL];
 // Initialize middleware
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // Enable CORS for all origins (adjust if needed)
-app.use(cors({ origin: '*' })); // Allows requests from any origin
+
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+})); // Allows requests from any origin
 
 // Serve static files (for example, uploaded images)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
