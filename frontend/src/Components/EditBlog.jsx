@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import SidePanel from "./SidePanel";
+import SidePanel from "./Sidepanel";
 
 // Define Quill editor modules and formats
 const modules = {
