@@ -11,11 +11,9 @@ const Header = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Check if admin is logged in initially
         const token = localStorage.getItem('adminToken');
         setIsAdminLoggedIn(!!token);
 
-        // Listen for changes in localStorage
         const handleStorageChange = () => {
             const token = localStorage.getItem('adminToken');
             setIsAdminLoggedIn(!!token);
@@ -40,7 +38,7 @@ const Header = () => {
     };
 
     const handleLogin = () => {
-        navigate("/admin/login"); // Redirect to the admin login page
+        navigate("/admin/login");
     };
 
     const togglePopup = () => {
@@ -48,30 +46,40 @@ const Header = () => {
     };
 
     const handleAdminDashboard = () => {
-        navigate("/admin/dashboard"); // Redirect to the admin dashboard
+        navigate("/admin/dashboard");
     };
 
     const handleLogout = () => {
         localStorage.removeItem('adminToken');
         setIsAdminLoggedIn(false);
-        navigate("/"); // Redirect to the homepage after logout
+        navigate("/");
     };
 
     return (
         <header className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black shadow-md py-4 fixed top-0 w-full left-0 right-0 z-50">
             <nav className="container mx-auto flex justify-between items-center px-4 md:px-6">
-                <div className="text-3xl font-extrabold">
+                
+                {/* Mobile Drawer Button */}
+                <div className="md:hidden">
+                    <FaBars
+                        className="text-2xl cursor-pointer"
+                        onClick={toggleDrawer}
+                    />
+                </div>
+
+                {/* Logo */}
+                <div className="text-3xl font-extrabold mx-auto md:mx-0">
                     <Link to="/">
                         <img
                             src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725890201/Copy_of_chef__3_-removebg-preview_cgzkd9.png"
                             alt="Logo"
-                            className="h-20 w-auto"
+                            className="h-16 w-auto"
                         />
                     </Link>
                 </div>
 
-                {/* Search Bar (Desktop) */}
-                <form onSubmit={handleSearch} className="flex flex-1 max-w-md ml-4">
+                {/* Desktop Search Bar */}
+                <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md ml-4">
                     <input
                         type="text"
                         value={searchQuery}
@@ -88,6 +96,7 @@ const Header = () => {
                     </button>
                 </form>
 
+                {/* Navigation Links for Desktop */}
                 <ul className="hidden md:flex space-x-6 text-lg pr-6">
                     <li>
                         <Link to="/" className="hover:text-gray-800 transition">
@@ -101,7 +110,7 @@ const Header = () => {
                     </li>
                     <li>
                         <Link to="/contact" className="hover:text-gray-700">
-                            ContactUs
+                            Contact Us
                         </Link>
                     </li>
                     <li>
@@ -111,11 +120,12 @@ const Header = () => {
                     </li>
                 </ul>
 
-                <div className="flex items-center space-x-4 md:space-x-6">
+                {/* User Login/Account Icons */}
+                <div className="flex items-center space-x-4">
                     {!isAdminLoggedIn ? (
                         <button
                             onClick={handleLogin}
-                            className="bg-black text-white px-6 py-3 rounded-full shadow-md hover:bg-gray-800 focus:outline-none transition mr-4"
+                            className="bg-black text-white px-6 py-2 rounded-full shadow-md hover:bg-gray-800 focus:outline-none transition md:mr-4"
                         >
                             Login
                         </button>
@@ -125,13 +135,6 @@ const Header = () => {
                             onClick={togglePopup}
                         />
                     )}
-
-                    <div className="md:hidden">
-                        <FaBars
-                            className="text-2xl cursor-pointer"
-                            onClick={toggleDrawer}
-                        />
-                    </div>
                 </div>
             </nav>
 
@@ -139,11 +142,12 @@ const Header = () => {
             <div
                 className={`fixed top-0 right-0 h-full w-64 bg-yellow-500 shadow-lg transform ${
                     isOpen ? "translate-x-0" : "translate-x-full"
-                } transition-transform duration-300 ease-in-out`}
+                } transition-transform duration-300 ease-in-out z-50`}
             >
                 <button className="text-2xl p-4" onClick={toggleDrawer}>
                     ✕
                 </button>
+                {/* Mobile Search Bar */}
                 <div className="flex items-center p-4 border-b border-gray-300">
                     <input
                         type="text"
@@ -170,7 +174,7 @@ const Header = () => {
                     </li>
                     <li>
                         <Link to="/contact" className="hover:text-gray-700" onClick={toggleDrawer}>
-                            ContactUs
+                            Contact Us
                         </Link>
                     </li>
                     <li>
@@ -178,7 +182,8 @@ const Header = () => {
                             Blogs
                         </Link>
                     </li>
-                    
+
+                    {/* Admin Links */}
                     {isAdminLoggedIn && (
                         <>
                             <li>
@@ -203,7 +208,7 @@ const Header = () => {
                 </ul>
             </div>
 
-            {/* Popup for Admin User */}
+            {/* Admin Popup */}
             {isPopupOpen && isAdminLoggedIn && (
                 <div className="fixed top-14 right-4 bg-white border border-gray-300 shadow-lg rounded-lg p-4 z-50">
                     <h2 className="text-xl font-bold mb-2">Admin Options</h2>

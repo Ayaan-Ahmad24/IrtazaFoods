@@ -81,6 +81,7 @@ const HomePage = () => {
   return (
     <div className="bg-white text-black font-sans pt-[calc(var(--header-height, 0px) + 1rem)] pb-10 mt-32 mb-6">
       {/* Hero Section */}
+
       <section className="hero mt-0">
         <Carousel
           showThumbs={false}
@@ -90,30 +91,24 @@ const HomePage = () => {
           interval={3000}
         >
           <div className="relative mt-[3rem]">
-            {" "}
-            {/* Adjust the margin-top here */}
             <img
               src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889400/Frozen_food_1_evkgqs.png"
               alt="Hero Image 1"
-              className="h-[75vh] w-full object-cover"
+              className="h-[19vh] md:h-[34vh] w-full object-cover"
             />
           </div>
           <div className="relative mt-[3rem]">
-            {" "}
-            {/* Adjust the margin-top here */}
             <img
               src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889409/Frozen_food_3_xm4ebl.png"
               alt="Hero Image 2"
-              className="h-[75vh] w-full object-cover"
+              className="h-[19vh] md:h-[34vh] w-full object-cover"
             />
           </div>
           <div className="relative mt-[3rem]">
-            {" "}
-            {/* Adjust the margin-top here */}
             <img
               src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889405/Frozen_food_2_m24qgd.png"
               alt="Hero Image 3"
-              className="h-[75vh] w-full object-cover"
+              className="h-[19vh] md:h-[34vh] w-full object-cover"
             />
           </div>
         </Carousel>
