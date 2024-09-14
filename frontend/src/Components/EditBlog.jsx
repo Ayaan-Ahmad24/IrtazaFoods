@@ -134,7 +134,9 @@ const EditBlogPage = () => {
                   onChange={setContent}
                   modules={modules}
                   formats={formats}
-                  className="mt-1 border border-gray-300 rounded-md w-full h-96"
+                  className="mt-1 border border-gray-300 rounded-md w-full"
+                  style={{ minHeight: '600px', maxHeight: '800px', overflowY: 'auto' }}
+                  placeholder="Write your blog content here..."
                   required
                 />
               </div>

@@ -72,9 +72,9 @@ const AddBlogPage = () => {
             <SidePanel />
             {/* Add Blog Form */}
             <div className="flex-1 bg-gray-100 min-h-screen py-12 px-4 flex justify-center md:ml-[7rem] mt-32">
-                <div className="w-full max-w-md md:max-w-4xl bg-white p-8 rounded-lg shadow-lg">
+                <div className="w-full max-w-md md:max-w-4xl bg-white p-8 rounded-lg shadow-lg flex flex-col space-y-6">
                     <h1 className="text-3xl md:text-4xl font-bold text-yellow-600 mb-6">Add Blog Post</h1>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="mb-6">
                             <label htmlFor="title" className="block text-lg font-medium text-gray-700">Title</label>
                             <input
@@ -88,16 +88,18 @@ const AddBlogPage = () => {
                         </div>
                         <div className="mb-6">
                             <label htmlFor="content" className="block text-lg font-medium text-gray-700">Content</label>
-                            <ReactQuill
-                                theme="snow"
-                                value={content}
-                                onChange={setContent}
-                                modules={modules}
-                                formats={formats}
-                                className="mt-1 block w-full h-96 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow-500"
-                                style={{ minHeight: '300px' }}
-                                required
-                            />
+                            <div className="relative">
+                                <ReactQuill
+                                    theme="snow"
+                                    value={content}
+                                    onChange={setContent}
+                                    modules={modules}
+                                    formats={formats}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-yellow-500"
+                                    style={{ minHeight: '600px', maxHeight: '600px', overflowY: 'auto' }}
+                                    required
+                                />
+                            </div>
                         </div>
                         <div className="mb-6">
                             <label htmlFor="author" className="block text-lg font-medium text-gray-700">Author</label>
