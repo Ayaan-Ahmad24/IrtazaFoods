@@ -19,7 +19,7 @@ const BlogListPage = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          "${import.meta.env.VITE_API_URL}/api/blog/get-blog"
+          `${import.meta.env.VITE_API_URL}/api/blog/get-blog`
         );
         if (Array.isArray(response.data)) {
           setBlogs(response.data);

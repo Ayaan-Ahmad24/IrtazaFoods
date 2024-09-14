@@ -10,7 +10,7 @@ const MenuPage = () => {
     const fetchMenuItems = async () => {
       try {
         const response = await axios.get(
-          "${import.meta.env.VITE_API_URL}/api/menu/get"
+          `${import.meta.env.VITE_API_URL}/api/menu/get`
         );
         if (Array.isArray(response.data)) {
           setMenuItems(response.data);
