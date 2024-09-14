@@ -83,36 +83,37 @@ const HomePage = () => {
       {/* Hero Section */}
 
       <section className="hero mt-0">
-        <Carousel
-          showThumbs={false}
-          autoPlay={true}
-          infiniteLoop={true}
-          transitionTime={500}
-          interval={3000}
-        >
-          <div className="relative mt-[3rem]">
-            <img
-              src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889400/Frozen_food_1_evkgqs.png"
-              alt="Hero Image 1"
-              className="h-[19vh] md:h-[34vh] w-full object-cover"
-            />
-          </div>
-          <div className="relative mt-[3rem]">
-            <img
-              src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889409/Frozen_food_3_xm4ebl.png"
-              alt="Hero Image 2"
-              className="h-[19vh] md:h-[34vh] w-full object-cover"
-            />
-          </div>
-          <div className="relative mt-[3rem]">
-            <img
-              src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889405/Frozen_food_2_m24qgd.png"
-              alt="Hero Image 3"
-              className="h-[19vh] md:h-[34vh] w-full object-cover"
-            />
-          </div>
-        </Carousel>
-      </section>
+  <Carousel
+    showThumbs={false}
+    autoPlay={true}
+    infiniteLoop={true}
+    transitionTime={500}
+    interval={3000}
+  >
+    <div className="relative">
+      <img
+        src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889400/Frozen_food_1_evkgqs.png"
+        alt="Hero Image 1"
+        className="h-[19vh] md:h-[30vh] lg:h-[80vh] w-full object-cover"
+      />
+    </div>
+    <div className="relative">
+      <img
+        src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889409/Frozen_food_3_xm4ebl.png"
+        alt="Hero Image 2"
+        className="h-[19vh] md:h-[30vh] lg:h-[80vh] w-full object-cover"
+      />
+    </div>
+    <div className="relative">
+      <img
+        src="https://res.cloudinary.com/duvlkyzij/image/upload/v1725889405/Frozen_food_2_m24qgd.png"
+        alt="Hero Image 3"
+        className="h-[19vh] md:h-[30vh] lg:h-[80vh] w-full object-cover"
+      />
+    </div>
+  </Carousel>
+</section>
+
 
       {/* About Us Section */}
       <section
