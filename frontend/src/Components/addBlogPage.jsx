@@ -4,6 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
+import SidePanel from "./Sidepanel";
 
 const modules = {
     toolbar: [
@@ -36,7 +37,7 @@ const AddBlogPage = () => {
     const mutation = useMutation({
         mutationFn: async (newBlog) => {
             try {
-                const response = await axios.post('${import.meta.env.VITE_API_URL}/api/blog/add-blog', newBlog, {
+                const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/blog/add-blog`, newBlog, {
                     headers: { 'Content-Type': 'application/json' }
                 });
                 return response.data;
@@ -66,50 +67,13 @@ const AddBlogPage = () => {
     };
 
     return (
-        <div className="flex mt-32">
+        <div className="flex flex-col md:flex-row">
             {/* Admin Side Panel */}
-            <div className="w-64 bg-yellow-100 p-4 shadow-lg fixed h-full">
-                <h2 className="text-xl font-bold mb-4">Welcome, Admin</h2>
-                <ul className="space-y-4">
-                    <li>
-                        <button
-                            onClick={() => navigate('/admin/add-menu-item')}
-                            className="w-full bg-yellow-300 p-2 rounded-md hover:bg-yellow-400 transition"
-                        >
-                            Add Menu Item
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => navigate('/admin/add-blog')}
-                            className="w-full bg-yellow-300 p-2 rounded-md hover:bg-yellow-400 transition"
-                        >
-                            Add Blog Post
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => navigate('/admin/show-all-blogs')}
-                            className="w-full bg-yellow-300 p-2 rounded-md hover:bg-yellow-400 transition"
-                        >
-                            Manage Blogs
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => navigate('/admin/show-all-menu-items')}
-                            className="w-full bg-yellow-300 p-2 rounded-md hover:bg-yellow-400 transition"
-                        >
-                            Manage Menu Items
-                        </button>
-                    </li>
-                </ul>
-            </div>
-
+            <SidePanel />
             {/* Add Blog Form */}
-            <div className="flex-1 bg-gray-100 min-h-screen py-12 px-4 flex justify-center ml-64">
-                <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg">
-                    <h1 className="text-4xl font-bold text-yellow-600 mb-6">Add Blog Post</h1>
+            <div className="flex-1 bg-gray-100 min-h-screen py-12 px-4 flex justify-center md:ml-[7rem] mt-32">
+                <div className="w-full max-w-md md:max-w-4xl bg-white p-8 rounded-lg shadow-lg">
+                    <h1 className="text-3xl md:text-4xl font-bold text-yellow-600 mb-6">Add Blog Post</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-6">
                             <label htmlFor="title" className="block text-lg font-medium text-gray-700">Title</label>
