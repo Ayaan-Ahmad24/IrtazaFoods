@@ -77,7 +77,7 @@ const BlogListPage = () => {
                 </div>
               ))
             ) : (
-              <div className="text-center">No blogs available.</div>
+              <div className="text-center"></div>
             )}
           </div>
         )}
