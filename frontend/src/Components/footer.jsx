@@ -95,31 +95,33 @@ const Footer = () => {
 
       {/* Leaflet Map */}
       <div className="bg-yellow-500 pt-8 pb-8 mx-0">
-        <div className="container mx-auto px-0">
-          <div className="h-64 w-full overflow-hidden">
-            <MapContainer
-              center={[latitude, longitude]}
-              zoom={13}
-              className="h-full w-full"
-              scrollWheelZoom={false} // Disable scroll zoom
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker 
-                position={[latitude, longitude]}
-                eventHandlers={{
-                  click: () => openGoogleMaps(), // Open Google Maps on marker click
-                }}
-              >
-                <Popup>
-                  Here we are <br />Irtazafoods.
-                </Popup>
-              </Marker>
-            </MapContainer>
-          </div>
-        </div>
-      </div>
+  <div className="container mx-auto px-0">
+    <div className="h-64 w-full overflow-hidden">
+      <MapContainer
+        center={[latitude, longitude]}
+        zoom={13}
+        className="h-full w-full"
+        scrollWheelZoom={false} // Disable scroll zoom
+        touchZoom="center" // Require two fingers for zoom on mobile
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker 
+          position={[latitude, longitude]}
+          eventHandlers={{
+            click: () => openGoogleMaps(), // Open Google Maps on marker click
+          }}
+        >
+          <Popup>
+            Here we are <br /> Irtazafoods.
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
+  </div>
+</div>
+
 
       {/* Footer Bottom */}
       <div className="bg-yellow-500 text-black py-4 text-center">

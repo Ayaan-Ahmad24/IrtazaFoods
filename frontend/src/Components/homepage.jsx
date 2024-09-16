@@ -242,7 +242,7 @@ const HomePage = () => {
         <div className="text-center mt-6">
           <button
             className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition"
-            onClick={() => navigate("/blog")}
+            onClick={() => navigate("/blogs")}
           >
             Show All Blogs
           </button>

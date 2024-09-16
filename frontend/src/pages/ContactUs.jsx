@@ -6,7 +6,7 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 const ContactUsPage = () => {
     const adminDetails = {
         address: 'Near Wahdat Road, Naqsha Stop, Lahore',
-        phone: '+92 300 1234567',
+        phone: '+92 321 9792864',
         email: 'Irtazafoods1@gmail.com',
     };
 
