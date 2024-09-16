@@ -135,7 +135,7 @@ const HomePage = () => {
 
       {/* About Us Section */}
       <section
-        className="container mx-auto py-16 px-4 bg-yellow-50 rounded-lg shadow-2xl "
+        className="container mx-auto py-16 px-4 bg-yellow-50 rounded-lg shadow-2xl"
         data-aos="fade-up"
       >
         <h2 className="text-4xl font-bold mb-6 text-yellow-600 text-center">
@@ -143,7 +143,28 @@ const HomePage = () => {
         </h2>
         <p className="text-lg leading-relaxed text-gray-800 mx-auto max-w-3xl text-center">
           At Irtazafoods, we are passionate about providing high-quality frozen
-          foods that are both convenient and delicious...
+          foods that are both convenient and delicious. Our mission is to ensure
+          that every meal you prepare is a delightful experience, combining
+          convenience with the taste of home-cooked goodness.
+          <br />
+          <br />
+          We take pride in sourcing the finest ingredients and using advanced
+          techniques to preserve the natural flavors and nutrients of our
+          products. Our team of dedicated professionals works tirelessly to
+          ensure that each product meets our stringent quality standards before
+          it reaches your table.
+          <br />
+          <br />
+          Our commitment extends beyond just the quality of our products. We
+          strive to make a positive impact on our community and the environment.
+          By choosing Irtazafoods, you are not only enjoying great food but also
+          supporting sustainable practices and responsible sourcing.
+          <br />
+          <br />
+          Whether you're preparing a quick weeknight dinner or hosting a special
+          occasion, Irtazafoods is here to make your life easier and more
+          enjoyable. Explore our range of products and discover the convenience
+          and quality that sets us apart.
         </p>
       </section>
 
@@ -220,37 +241,40 @@ const HomePage = () => {
               <div
                 key={blog._id}
                 className="bg-yellow-100 shadow-2xl rounded-lg p-6 text-center transition-transform transform hover:rotate-1 hover:shadow-3xl hover:scale-105"
+                style={{
+                  height: "450px",
+                  padding: "20px",
+                  margin: "10px",
+                  border: "2px solid #f1c40f",
+                  borderRadius: "15px",
+                }}
               >
+                <div className="overflow-hidden rounded-lg h-2/3">
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
+                    className="w-full h-[300px] object-cover mb-4"
+                  />
+                </div>
                 <h3 className="text-xl font-bold text-yellow-600">
                   {blog.title}
                 </h3>
                 <p className="text-sm text-gray-700">{blog.author}</p>
-                <button
-                  className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition"
-                  onClick={() => {
-                    navigate(`/blogs/${blog._id}`);
-                    scrollToTop();
-                  }}
-                >
-                    Read More
-                  </button>
               </div>
             ))}
           </div>
         )}
-        {!isLoadingBlogs && (
-          <div className="text-center mt-6">
-            <button
-              className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition"
-              onClick={() => {
-                navigate("/blogs");
-                scrollToTop();
-              }}
-            >
-              Show All Blogs
-            </button>
-          </div>
-        )}
+        <div className="text-center mt-6">
+          <button
+            className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition"
+            onClick={() => {
+              navigate("/blogs");
+              scrollToTop();
+            }}
+          >
+            Show All Blogs
+          </button>
+        </div>
       </section>
     </div>
   );
